@@ -1,8 +1,7 @@
 package com.taller.taller.service;
 
-
 import com.taller.taller.model.Posteo;
-import com.taller.taller.repository.IPosteoRepository;
+import com.taller.taller.repository.PosteoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,10 +9,9 @@ import java.util.List;
 @Service
 public class PosteoService implements IPosteoService {
 
-    private final IPosteoRepository posteoRepository;
+    private final PosteoRepository posteoRepository;
 
-    // 🔹 Inyección de dependencias por constructor
-    public PosteoService(IPosteoRepository posteoRepository) {
+    public PosteoService(PosteoRepository posteoRepository) {
         this.posteoRepository = posteoRepository;
     }
 
@@ -24,12 +22,19 @@ public class PosteoService implements IPosteoService {
 
     @Override
     public Posteo findById(Long id) {
-        return posteoRepository.findById(id);
+        return posteoRepository.findById(id).orElse(null);
     }
 
     @Override
     public void save(Posteo posteo) {
         posteoRepository.save(posteo);
     }
+
+    @Override
+    public void delete(Long id) {
+        posteoRepository.deleteById(id);
+    }
 }
+
+
 

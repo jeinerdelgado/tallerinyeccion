@@ -1,8 +1,15 @@
 package com.taller.taller.model;
 
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "posteos")
 public class Posteo {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String titulo;
     private String autor;
 
@@ -24,4 +31,5 @@ public class Posteo {
     public String getAutor() { return autor; }
     public void setAutor(String autor) { this.autor = autor; }
 }
+
 
