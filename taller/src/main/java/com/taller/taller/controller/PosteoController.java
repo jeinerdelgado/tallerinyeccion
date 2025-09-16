@@ -40,7 +40,7 @@ public class PosteoController {
         Posteo existente = posteoService.findById(id);
         if (existente != null) {
             existente.setTitulo(posteo.getTitulo());
-            existente.setAutor(posteo.getAutor());
+            existente.setAuthor(posteo.getAuthor());
             posteoService.save(existente);
             return "Posteo actualizado con éxito!";
         }
